@@ -1,0 +1,324 @@
+/* 1. VARIABLES & THEMES*/
+:root {
+  /* --- Core Colors --- */
+  /* Default Dark Mode (Slate-950) */
+  --bg-color: #020617; 
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  
+  /* Glass Variables (Dynamic) */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* --- Nebula Colors --- */
+  --glow-indigo: #6366f1;
+  --glow-purple: #a855f7;
+
+  /* --- Accent Colors (Jewel Tones) --- */
+  --accent-emerald: #10b981;
+  --accent-sky: #0ea5e9;
+  --accent-violet: #8b5cf6; /* Default */
+  --accent-rose: #f43f5e;
+  
+  /* Active Accent (starts as Violet) */
+  --current-accent: var(--accent-violet);
+
+  /* --- Fonts --- */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Light Mode Override */
+[data-theme="light"] {
+  --bg-color: #f8fafc; /* Slate-50 */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  
+  /* darker glass for light mode visibility */
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   2. GLOBAL RESET
+   ========================================= */
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  /* Smooth transition for theme/color switching */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography Classes */
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+
+/* Text Gradient (Uses fixed nebula colors for consistency) */
+.text-gradient {
+  background: linear-gradient(135deg, var(--glow-indigo), var(--glow-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   3. NEBULA BACKGROUND ANIMATION
+   ========================================= */
+.nebula-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /* Transition for the toggle switch */
+  transition: opacity 0.5s ease; 
+}
+
+.nebula-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3; 
+}
+
+.glow-indigo {
+  width: 600px;
+  height: 600px;
+  background: var(--glow-indigo);
+  top: -250px; 
+  left: -250px;
+  animation: pulse-glow 4s infinite alternate ease-in-out;
+}
+
+.glow-purple {
+  width: 500px;
+  height: 500px;
+  background: var(--glow-purple);
+  bottom: -200px;
+  right: -200px;
+  animation: pulse-glow 5s infinite alternate ease-in-out;
+  animation-delay: 0.5s;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(0.8); opacity: 0.15; }
+  100% { transform: scale(1.1); opacity: 0.45; }
+}
+
+/* =========================================
+   4. UI COMPONENTS (Glass & Buttons)
+   ========================================= */
+/* Glassmorphism Utility */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Status Dot (Updated to use Dynamic Accent) */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--current-accent);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px var(--current-accent);
+  animation: blink 2s infinite;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Brand Logo (Updated to use Dynamic Accent) */
+.brand-logo {
+  width: 35px;
+  height: 35px;
+  background: var(--current-accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+/* =========================================
+   6. FLOATING NAVIGATION (New)
+   ========================================= */
+
+.floating-nav {
+  /* Detach from edges (The "Floating" effect) */
+  position: fixed;
+  top: 1rem;       /* Margin from top */
+  left: 1rem;      /* Margin from left */
+  right: 1rem;     /* Margin from right */
+  
+  /* The "Pill" Shape */
+  border-radius: 20px; 
+  z-index: 1030;   /* Keep above everything */
+  
+  /* Reset Bootstrap's full width forcing */
+  width: auto;     
+  
+  /* Smooth transition for resizing */
+  transition: all 0.3s ease-in-out;
+}
+
+/* On larger screens, give it more breathing room and roundness */
+@media (min-width: 992px) {
+  .floating-nav {
+    top: 1.5rem;
+    left: 3rem;
+    right: 3rem;
+    border-radius: 50px; /* Full pill shape on desktop */
+  }
+}
+
+/* Adjust the glass effect specifically for the nav to be subtle */
+.floating-nav.glass-effect {
+  /* Using your variables but with slightly stronger border for the "Rim Light" */
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Deeper shadow for "Floating" depth */
+}
+
+/* Hover effect for Nav Links */
+.navbar-nav .nav-link {
+  position: relative;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  opacity: 1 !important;
+  color: white !important;
+}
+
+/* Light Mode Overrides for Nav */
+[data-theme="light"] .floating-nav.glass-effect {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   5. SETTINGS PANEL (OFFCANVAS)
+   ========================================= */
+/* Custom Backdrop for the Settings Drawer */
+.settings-backdrop {
+  backdrop-filter: blur(20px);
+  background: rgba(2, 6, 23, 0.85); /* Slightly darker for contrast */
+  border-left: 1px solid var(--glass-border);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+
+[data-theme="light"] .settings-backdrop {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* Custom Range Slider */
+input[type=range] {
+  height: 6px;
+  border-radius: 5px;
+  background: #334155;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--current-accent); /* Matches accent */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.3s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Color Picker Buttons */
+.color-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.color-btn:hover {
+    transform: scale(1.05);
+}
+
+.color-btn.active {
+  border-color: white; /* Highlight active choice */
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--current-accent);
+}
+
+/* Light mode adjustments for color buttons */
+[data-theme="light"] .color-btn.active {
+    border-color: #0f172a; 
+}
+
+/* Custom Toggle Switch (Nebula) */
+.form-check-input:checked {
+  background-color: var(--current-accent);
+  border-color: var(--current-accent);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25); /* Focus ring */
+}
+/* =========================================
+   7. LIGHT MODE OVERRIDES (The Fix)
+   ========================================= */
+
+/* 1. Force "text-white" and "text-light" to be dark in light mode */
+[data-theme="light"] .text-white,
+[data-theme="light"] .text-light {
+  color: var(--text-primary) !important;
+}
+
+/* 2. Update Secondary Text to use your variable */
+[data-theme="light"] .text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+/* 3. Fix Navbar Links & Brand */
+[data-theme="light"] .navbar-brand,
+[data-theme="light"] .nav-link {
+  color: var(--text-primary) !important;
+}
+
+/* 4. Invert "Outline Light" buttons (like the Settings Gear) */
+[data-theme="light"] .btn-outline-light {
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .btn-outline-light:hover {
+  background-color: var(--text-primary);
+  color: white;
+}
+
+/* 5. Fix "View Projects" button (btn-light) to stand out in light mode */
+[data-theme="light"] .btn-light {
+  background-color: var(--text-primary);
+  color: white;
+  border: none;
+}

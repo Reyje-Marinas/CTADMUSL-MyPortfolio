@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reyje Marinas | Digital Experiences</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  
+  <body>
+
+    <div class="nebula-container">
+      <div class="nebula-glow glow-indigo"></div>
+      <div class="nebula-glow glow-purple"></div>
+    </div>
+
+    <nav class="navbar navbar-expand fixed-top floating-nav glass-effect px-3 py-2 px-md-4 py-md-3">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        
+        <a class="navbar-brand font-heading fw-bold text-white d-flex align-items-center gap-2" href="#">
+          <span class="brand-logo">R</span>
+          <span class="d-none d-sm-block">Reyje Marinas</span>
+        </a>
+
+        <ul class="navbar-nav d-none d-md-flex gap-4 font-body">
+          <li class="nav-item"><a class="nav-link text-light opacity-75" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link text-light opacity-75" href="#projects">Expertise</a></li>
+          <li class="nav-item"><a class="nav-link text-light opacity-75" href="#contact">Connect</a></li>
+        </ul>
+
+        <div class="d-flex gap-2 align-items-center">
+          <button class="btn btn-sm btn-outline-light rounded-pill px-3 border-opacity-25" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel">
+            ⚙️
+          </button>
+          <button class="btn btn-primary rounded-pill px-4 font-heading fw-bold" data-bs-toggle="modal" data-bs-target="#hireModal">
+            Hire Me
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <header id="home" class="vh-100 d-flex align-items-center position-relative overflow-hidden">
+      <div id="three-container" class="position-absolute top-0 end-0 w-50 h-100 d-none d-lg-block" style="z-index: 0;"></div>
+
+      <div class="container position-relative" style="z-index: 1;">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="d-inline-flex align-items-center glass-effect px-3 py-1 rounded-pill mb-4">
+              <span class="status-dot me-2"></span>
+              <span class="text-white small font-body">Available for Q1 2026 Projects</span>
+            </div>
+
+            <h1 class="display-1 font-heading fw-bold text-white lh-1 mb-4">
+              Digital <br>
+              <span class="text-gradient">Experiences</span> <br>
+              Crafted with <br>
+              Logic.
+            </h1>
+
+            <p class="lead text-secondary font-body mb-5" style="max-width: 500px;">
+              A BSIT student and Backend Developer pushing the boundaries of the web with ASP.NET Core, PHP, and Interactive Graphics.
+            </p>
+
+            <div class="d-flex gap-3">
+              <a href="#projects" class="btn btn-light rounded-pill px-4 py-2 font-heading fw-bold">View Projects</a>
+              <a href="#contact" class="btn glass-effect text-white rounded-pill px-4 py-2 font-heading">Get in Touch</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="sidebar">
+      <div class="offcanvas offcanvas-end settings-backdrop" tabindex="-1" id="settingsPanel" style="width: 350px;">
+    
+        <div class="offcanvas-header pt-4 px-4">
+            <h5 class="offcanvas-title font-heading fw-bold fs-3">Site Settings</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+          </div>
+
+          <div class="offcanvas-body px-4">
+            
+            <div class="mb-5">
+              <label class="small text-uppercase text-secondary fw-bold mb-3 tracking-wide">Visual Theme</label>
+              <div class="btn-group w-100" role="group">
+                <input type="radio" class="btn-check" name="theme" id="themeLight" autocomplete="off">
+                <label class="btn btn-outline-light" for="themeLight">Light</label>
+
+                <input type="radio" class="btn-check" name="theme" id="themeDark" autocomplete="off" checked>
+                <label class="btn btn-outline-light" for="themeDark">Dark</label>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <label class="small text-uppercase text-secondary fw-bold mb-3 tracking-wide">Accent Color</label>
+              <div class="d-flex justify-content-between px-2">
+                <button class="color-btn" style="background: var(--accent-emerald)" data-color="emerald" onclick="updateAccent('emerald')"></button>
+                <button class="color-btn" style="background: var(--accent-sky)" data-color="sky" onclick="updateAccent('sky')"></button>
+                <button class="color-btn active" style="background: var(--accent-violet)" data-color="violet" onclick="updateAccent('violet')"></button>
+                <button class="color-btn" style="background: var(--accent-rose)" data-color="rose" onclick="updateAccent('rose')"></button>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <label class="small text-uppercase text-secondary fw-bold mb-3 tracking-wide">3D Rotation Speed</label>
+              <input type="range" class="form-range w-100" id="animSpeed" min="0" max="0.05" step="0.001" value="0.005">
+              <div class="d-flex justify-content-between text-secondary small mt-2">
+                <span>Chill</span>
+                <span>Warp Drive</span>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <div class="d-flex align-items-center justify-content-between">
+                <label class="small text-uppercase text-secondary fw-bold mb-0 tracking-wide">Nebula Background</label>
+                <div class="form-check form-switch fs-4">
+                  <input class="form-check-input" type="checkbox" id="nebulaToggle" checked>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+              <p class="small fst-italic text-secondary mb-0">
+                "The best way to predict the future is to invent it."
+              </p>
+            </div>
+
+        </div>
+      </div>
+    </section>
+    
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
