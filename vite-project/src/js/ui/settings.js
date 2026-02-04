@@ -5,13 +5,19 @@ export function initSettings() {
     const themeRadios = document.querySelectorAll('input[name="theme"]');
     themeRadios.forEach(radio => {
         radio.addEventListener('change', (e) => {
+            let theme = 'dark'; // Default
             if (e.target.id === 'themeLight') {
                 document.body.setAttribute('data-theme', 'light');
-                document.querySelector('.btn-close').classList.remove('btn-close-white'); // Fix close button color
+                document.querySelector('.btn-close').classList.remove('btn-close-white');
+                theme = 'light';
             } else {
                 document.body.removeAttribute('data-theme');
                 document.querySelector('.btn-close').classList.add('btn-close-white');
+                theme = 'dark';
             }
+            
+            // DISPATCH EVENT so Three.js knows!
+            window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: theme } }));
         });
     });
 

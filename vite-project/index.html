@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   
@@ -76,6 +76,319 @@
       </div>
     </header>
 
+    <section id="about" class="py-5 position-relative overflow-hidden">
+      <div class="container py-5">
+        <div class="row align-items-center gx-5">
+          
+          <div class="col-lg-6 position-relative mb-5 mb-lg-0">
+            <canvas id="profileCanvas" class="position-absolute top-50 start-50 translate-middle" style="width: 140%; height: 140%; z-index: 0; opacity: 0.5;"></canvas>
+            
+            <div class="about-image-wrapper position-relative rounded-4 overflow-hidden shadow-lg" style="z-index: 1;">
+                <img src="./public/assets/MyProfile.JPEG" alt="Reyje Marinas" class="img-fluid w-100 profile-img-base">
+                
+                <div class="image-overlay position-absolute bottom-0 start-0 w-100 p-4">
+                    <h4 class="font-heading fw-bold text-white mb-0">Reyje Marinas</h4>
+                    <p class="small text-white-50 mb-0">Backend Developer & Sys. Analyst</p>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 ps-lg-5 position-relative" style="z-index: 2;">
+            <span class="badge glass-effect text-secondary px-3 py-2 rounded-pill mb-3 font-heading tracking-wide">MY JOURNEY</span>
+            
+            <h2 class="display-5 font-heading fw-bold mb-4 lh-sm">
+                Crafting code with <span class="text-primary">precision</span> and pixels with <span class="text-info">purpose</span>.
+            </h2>
+            
+            <p class="lead text-secondary mb-4">
+                Hello! I'm Reyje, a BSIT student living at the intersection of complex logic and beautiful design. I specialize in building scalable web architectures using <strong class="text-white">ASP.NET Core</strong> and <strong class="text-white">PHP</strong>.
+            </p>
+            
+            <p class="text-secondary mb-5">
+                My philosophy is simple: technology should be invisible. Whether it's the <strong>FindIT</strong> community system or the <strong>BayanChain</strong> platform, my focus is on solving real-world problems with rock-solid engineering.
+            </p>
+
+            <div class="d-flex gap-5 border-top border-light border-opacity-10 pt-4">
+                <div>
+                    <h2 class="fw-bold font-heading text-white mb-0">5+</h2>
+                    <p class="small text-secondary text-uppercase tracking-wide">Major Projects</p>
+                </div>
+                <div>
+                    <h2 class="fw-bold font-heading text-white mb-0">3+</h2>
+                    <p class="small text-secondary text-uppercase tracking-wide">Years Coding</p>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<section id="expertise" class="py-5 position-relative">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <h2 class="display-5 font-heading fw-bold mb-4">
+              Bridging the gap between <span class="text-gradient">Design</span> and <span class="text-white">Code</span>.
+            </h2>
+            <p class="lead text-secondary mb-4">
+              I don't just build websites; I engineer systems. Using the native Canvas API and WebGL, I create high-performance interfaces that standard HTML simply cannot replicate.
+            </p>
+            
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-50 shadow-sm">
+                  <h3 class="h2 fw-bold text-primary mb-0">98%</h3>
+                  <p class="small text-secondary text-uppercase mb-0 tracking-wide">Optimization</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-50 shadow-sm">
+                  <h3 class="h2 fw-bold text-white mb-0">BSIT</h3>
+                  <p class="small text-secondary text-uppercase mb-0 tracking-wide">Academic Focus</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7 ps-lg-5">
+            <div class="glass-effect rounded-4 p-4 p-md-5 position-relative overflow-hidden shadow-lg">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="font-heading fw-bold text-white mb-0">Technical Proficiency</h4>
+                <i class="bi bi-three-dots text-secondary"></i>
+              </div>
+              
+              <canvas id="skillsCanvas" style="width: 100%; height: 400px;"></canvas>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-5 position-relative">
+      <div class="container py-5">
+        
+        <div class="mb-5">
+          <h2 class="display-4 font-heading fw-bold mb-3">
+            Selected <span class="text-gradient">Works</span>
+          </h2>
+          <p class="lead text-secondary" style="max-width: 600px;">
+            A collection of experimental multimedia projects and commercial applications focused on high-performance web experiences.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          
+          <div class="col-lg-4 col-md-6">
+            <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
+              <div class="project-thumb position-relative overflow-hidden">
+                <img src="./public/assets/labada.jpg" alt="FindIT System" class="img-fluid w-100">
+                <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
+                  <span class="badge glass-effect text-white fw-normal tracking-wide">PHP</span>
+                  <span class="badge glass-effect text-white fw-normal tracking-wide">MYSQL</span>
+                </div>
+              </div>
+              
+              <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                <h3 class="h4 font-heading fw-bold text-white mb-2">FindIT System</h3>
+                <p class="text-secondary small mb-4 flex-grow-1">
+                  A community-based Lost & Found system featuring real-time reporting, matching algorithms, and RESTful API integration.
+                </p>
+                
+                <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-secondary border-opacity-10">
+                  <div class="d-flex gap-3">
+                    <a href="#" class="icon-link text-secondary hover-white" title="View Code"><i class="bi bi-github fs-5"></i></a>
+                    <a href="#" class="icon-link text-secondary hover-white" title="Live Demo"><i class="bi bi-box-arrow-up-right fs-5"></i></a>
+                  </div>
+                  <a href="#" class="case-study-link small text-primary fw-bold text-decoration-none tracking-wide">
+                    EXPLORE CASE STUDY <i class="bi bi-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
+              <div class="project-thumb position-relative overflow-hidden">
+                <img src="./public/assets/labada.jpg" alt="Apartment AI" class="img-fluid w-100">
+                <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
+                  <span class="badge glass-effect text-white fw-normal tracking-wide">ASP.NET CORE</span>
+                  <span class="badge glass-effect text-white fw-normal tracking-wide">ML.NET</span>
+                </div>
+              </div>
+              
+              <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                <h3 class="h4 font-heading fw-bold text-white mb-2">Apartment AI</h3>
+                <p class="text-secondary small mb-4 flex-grow-1">
+                  Capstone project featuring an AI-driven matching engine that suggests apartments to tenants based on lifestyle preferences.
+                </p>
+                
+                <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-secondary border-opacity-10">
+                  <div class="d-flex gap-3">
+                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-github fs-5"></i></a>
+                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-box-arrow-up-right fs-5"></i></a>
+                  </div>
+                  <a href="#" class="case-study-link small text-primary fw-bold text-decoration-none tracking-wide">
+                    EXPLORE CASE STUDY <i class="bi bi-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
+              <div class="project-thumb position-relative overflow-hidden">
+                <img src="./public/assets/labada.jpg" alt="MabalaCan" class="img-fluid w-100">
+                <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
+                  <span class="badge glass-effect text-white fw-normal tracking-wide">SYSTEMS DESIGN</span>
+                  <span class="badge glass-effect text-white fw-normal tracking-wide">FIGMA</span>
+                </div>
+              </div>
+              
+              <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                <h3 class="h4 font-heading fw-bold text-white mb-2">MabalaCan Reporting</h3>
+                <p class="text-secondary small mb-4 flex-grow-1">
+                  A map-integrated community reporting platform. Designed the complete architecture including Use Cases, DFDs, and ERDs.
+                </p>
+                
+                <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-secondary border-opacity-10">
+                  <div class="d-flex gap-3">
+                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-github fs-5"></i></a>
+                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-box-arrow-up-right fs-5"></i></a>
+                  </div>
+                  <a href="#" class="case-study-link small text-primary fw-bold text-decoration-none tracking-wide">
+                    EXPLORE CASE STUDY <i class="bi bi-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5 position-relative">
+      <div class="container py-5">
+        
+        <div class="glass-effect rounded-5 p-4 p-lg-5 overflow-hidden position-relative">
+          
+          <div class="row g-5 align-items-center position-relative" style="z-index: 1;">
+            
+            <div class="col-lg-5">
+              <h2 class="display-5 font-heading fw-bold mb-4">
+                Let’s start a <br> <span class="text-gradient">conversation.</span>
+              </h2>
+              <p class="lead text-secondary mb-5">
+                Interested in collaboration or just want to chat about system architecture? Send me a message and I'll get back to you within 24 hours.
+              </p>
+              
+              <div class="d-flex flex-column gap-4">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="icon-box glass-effect rounded-circle p-3 d-flex align-items-center justify-content-center text-primary">
+                    <i class="bi bi-envelope-fill fs-4"></i>
+                  </div>
+                  <div>
+                    <span class="d-block text-secondary small text-uppercase tracking-wide">Email</span>
+                    <a href="mailto:reyje.marinas@example.com" class="text-white text-decoration-none fw-light fs-5">reyje.marinas@example.com</a>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                  <div class="icon-box glass-effect rounded-circle p-3 d-flex align-items-center justify-content-center text-primary">
+                    <i class="bi bi-geo-alt-fill fs-4"></i>
+                  </div>
+                  <div>
+                    <span class="d-block text-secondary small text-uppercase tracking-wide">Location</span>
+                    <span class="text-white fw-light fs-5">Pampanga, Philippines</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div id="successMessage" class="alert alert-success d-none mb-3 d-flex align-items-center" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <div>Message sent successfully! I'll be in touch soon.</div>
+              </div>
+
+              <form id="contactForm" novalidate>
+                <div class="row g-3">
+                  
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control glass-input" id="name" placeholder="Name" required minlength="2">
+                      <label for="name">Name</label>
+                      <div class="invalid-feedback">Name is required (min 2 chars).</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="email" class="form-control glass-input" id="email" placeholder="name@example.com" required>
+                      <label for="email">Email</label>
+                      <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <textarea class="form-control glass-input" placeholder="Message" id="message" style="height: 150px" required minlength="10"></textarea>
+                      <label for="message">Your Message</label>
+                      <div class="invalid-feedback">Message must be at least 10 characters long.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 font-heading fw-bold d-flex align-items-center justify-content-center gap-2">
+                      <span>Send Message</span>
+                      <i class="bi bi-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4 border-top border-white border-opacity-10 position-relative bg-dark bg-opacity-50" style="backdrop-filter: blur(10px);">
+      <div class="container">
+        <div class="row align-items-center gy-3">
+          
+          <div class="col-md-4 text-center text-md-start">
+            <a class="text-decoration-none d-inline-flex align-items-center gap-2 mb-1" href="#">
+              <span class="brand-logo" style="width: 28px; height: 28px; font-size: 0.9rem;">R</span>
+              <span class="font-heading fw-bold text-white small tracking-wide">Reyje Marinas</span>
+            </a>
+            <span class="text-secondary small ms-2">© 2026</span>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <div class="d-flex justify-content-center gap-4">
+              <a href="#" class="footer-link text-secondary text-decoration-none small transition-all">Twitter</a>
+              <a href="#" class="footer-link text-secondary text-decoration-none small transition-all">GitHub</a>
+              <a href="#" class="footer-link text-secondary text-decoration-none small transition-all">LinkedIn</a>
+              <a href="#" class="footer-link text-secondary text-decoration-none small transition-all">Dribbble</a>
+            </div>
+          </div>
+
+          <div class="col-md-4 text-center text-md-end">
+            <p class="text-secondary small mb-0">
+              Built with <span class="text-white">Three.js</span>, <span class="text-white">Bootstrap</span> & <span class="text-white">Vite</span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
     <section id="sidebar">
       <div class="offcanvas offcanvas-end settings-backdrop" tabindex="-1" id="settingsPanel" style="width: 350px;">
     
@@ -131,6 +444,77 @@
               </p>
             </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="modal fade" id="hireModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          
+          <div class="modal-content border-0 overflow-hidden shadow-lg" style="background-color: #0f172a;">
+            
+            <div class="modal-header border-0 p-4 text-white" style="background: linear-gradient(135deg, var(--glow-indigo), var(--glow-purple));">
+              <div>
+                <h5 class="modal-title font-heading fw-bold fs-3">Hire Reyje</h5>
+                <p class="mb-0 small opacity-75">Let's build something extraordinary together.</p>
+              </div>
+              <button type="button" class="btn-close btn-close-white align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-4">
+              
+              <form id="hireForm" novalidate>
+                <div class="row g-3">
+                  
+                  <div class="col-md-6">
+                    <label class="form-label small text-uppercase text-secondary fw-bold tracking-wide">Your Name</label>
+                    <input type="text" class="form-control glass-input" id="clientName" placeholder="John Doe" required>
+                    <div class="invalid-feedback">Name is required.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label small text-uppercase text-secondary fw-bold tracking-wide">Email Address</label>
+                    <input type="email" class="form-control glass-input" id="clientEmail" placeholder="john@example.com" required>
+                    <div class="invalid-feedback">Valid email required.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label small text-uppercase text-secondary fw-bold tracking-wide">Project Type</label>
+                    <select class="form-select glass-input" id="projectType" required>
+                      <option value="" selected disabled>Select a type...</option>
+                      <option value="web">Custom Web Application</option>
+                      <option value="mobile">Mobile App Development</option>
+                      <option value="system">Systems Architecture</option>
+                      <option value="other">Other / Consultation</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a project type.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label small text-uppercase text-secondary fw-bold tracking-wide">Project Details</label>
+                    <textarea class="form-control glass-input" id="projectDetails" rows="4" placeholder="Tell me about your vision..." required minlength="20"></textarea>
+                    <div class="invalid-feedback">Please provide at least 20 characters of detail.</div>
+                  </div>
+
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 font-heading fw-bold shadow-lg">
+                      Submit Inquiry
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <div id="hireSuccess" class="d-none text-center py-5">
+                <div class="mb-3">
+                  <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                </div>
+                <h4 class="text-white fw-bold">Inquiry Received!</h4>
+                <p class="text-secondary">I'll review your project details and get back to you shortly.</p>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>

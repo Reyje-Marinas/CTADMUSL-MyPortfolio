@@ -10,18 +10,18 @@
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
 
-  /* --- Nebula Colors --- */
-  --glow-indigo: #6366f1;
-  --glow-purple: #a855f7;
+  /* --- Nebula Colors (UPDATED TO BLUES) --- */
+  --glow-primary: #3b82f6;   /* Royal Blue (was Indigo) */
+  --glow-secondary: #0ea5e9; /* Sky Blue (was Purple) */
 
   /* --- Accent Colors (Jewel Tones) --- */
   --accent-emerald: #10b981;
   --accent-sky: #0ea5e9;
-  --accent-violet: #8b5cf6; /* Default */
+  --accent-violet: #8b5cf6;
   --accent-rose: #f43f5e;
   
-  /* Active Accent (starts as Violet) */
-  --current-accent: var(--accent-violet);
+  /* Active Accent */
+  --current-accent: var(--accent-sky); /* Default to Sky Blue now */
 
   /* --- Fonts --- */
   --font-heading: 'Space Grotesk', sans-serif;
@@ -30,11 +30,11 @@
 
 /* Light Mode Override */
 [data-theme="light"] {
-  --bg-color: #f8fafc; /* Slate-50 */
+  --bg-color: #f8fafc; 
   --text-primary: #0f172a;
   --text-secondary: #475569;
   
-  /* darker glass for light mode visibility */
+  /* glass for light mode visibility */
   --glass-bg: rgba(255, 255, 255, 0.6);
   --glass-border: rgba(0, 0, 0, 0.1);
 }
@@ -47,7 +47,6 @@ body {
   font-family: var(--font-body);
   color: var(--text-primary);
   overflow-x: hidden;
-  /* Smooth transition for theme/color switching */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -55,9 +54,9 @@ body {
 .font-heading { font-family: var(--font-heading); }
 .font-body { font-family: var(--font-body); }
 
-/* Text Gradient (Uses fixed nebula colors for consistency) */
+/* Text Gradient (Updated to Blue Spectrum) */
 .text-gradient {
-  background: linear-gradient(135deg, var(--glow-indigo), var(--glow-purple));
+  background: linear-gradient(135deg, var(--glow-primary), var(--glow-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -74,7 +73,6 @@ body {
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  /* Transition for the toggle switch */
   transition: opacity 0.5s ease; 
 }
 
@@ -85,19 +83,21 @@ body {
   opacity: 0.3; 
 }
 
+/* Top-Left Blob (Royal Blue) */
 .glow-indigo {
   width: 600px;
   height: 600px;
-  background: var(--glow-indigo);
+  background: var(--glow-primary); /* Changed to Blue */
   top: -250px; 
   left: -250px;
   animation: pulse-glow 4s infinite alternate ease-in-out;
 }
 
+/* Bottom-Right Blob (Sky Blue) */
 .glow-purple {
   width: 500px;
   height: 500px;
-  background: var(--glow-purple);
+  background: var(--glow-secondary); /* Changed to Sky */
   bottom: -200px;
   right: -200px;
   animation: pulse-glow 5s infinite alternate ease-in-out;
@@ -108,7 +108,6 @@ body {
   0% { transform: scale(0.8); opacity: 0.15; }
   100% { transform: scale(1.1); opacity: 0.45; }
 }
-
 /* =========================================
    4. UI COMPONENTS (Glass & Buttons)
    ========================================= */
@@ -217,14 +216,27 @@ body {
    ========================================= */
 /* Custom Backdrop for the Settings Drawer */
 .settings-backdrop {
-  backdrop-filter: blur(20px);
-  background: rgba(2, 6, 23, 0.85); /* Slightly darker for contrast */
-  border-left: 1px solid var(--glass-border);
+  /* The "Frost" Effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  
+  /* The "Tint" - Dark Mode (Black at 60% opacity) */
+  background: rgba(2, 6, 23, 0.6); 
+  
+  /* The "Rim Light" - Left Border only */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  
   box-shadow: -10px 0 30px rgba(0,0,0,0.5);
 }
 
+/* Light Mode Tint (White at 70% opacity) */
 [data-theme="light"] .settings-backdrop {
-    background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.offcanvas-title {
+  color: var(--text-primary) !important;
 }
 
 /* Custom Range Slider */
@@ -321,4 +333,358 @@ input[type=range]::-webkit-slider-thumb:hover {
   background-color: var(--text-primary);
   color: white;
   border: none;
+}
+
+/* =========================================
+   7. ABOUT SECTION EFFECTS (Flashlight)
+   ========================================= */
+
+/* The Wrapper handles the hover state & flashlight container */
+.about-image-wrapper {
+  cursor: pointer;
+  /* Ensure the flashlight overlay stays inside the rounded corners */
+  position: relative;
+  overflow: hidden; 
+  border-radius: inherit; /* Match parent rounding */
+}
+
+/* The Image Base State */
+.profile-img-base {
+  /* Slightly dimmed by default to blend with dark theme */
+  filter: brightness(0.9) contrast(1.1);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* THE FLASHLIGHT BEAM (Hidden by default) */
+.about-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Make it bigger than the container so the edges are soft */
+    width: 150%;
+    height: 150%;
+    z-index: 2; /* Sits on top of image, below text overlay */
+    
+    /* The Spotlight Gradient */
+    background: radial-gradient(
+        circle closest-side at center,
+        rgba(255, 255, 255, 0.3) 0%,   /* Bright center core */
+        rgba(255, 255, 255, 0.1) 40%,  /* Soft falloff */
+        transparent 80%                /* Dark edges */
+    );
+    
+    /* Start hidden, shrunk, and centered */
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    pointer-events: none; /* Let clicks go through to the image */
+    
+    /* 'overlay' or 'soft-light' blend modes look best for lights */
+    mix-blend-mode: overlay; 
+}
+
+/* --- HOVER STATES --- */
+
+/* 1. Brighten the image and zoom in */
+.about-image-wrapper:hover .profile-img-base {
+  transform: scale(1.05);
+  /* Make it look illuminated */
+  filter: brightness(1.15) contrast(1.05) saturate(1.1);
+}
+
+/* 2. Turn on the flashlight beam */
+.about-image-wrapper:hover::before {
+    opacity: 1;
+    /* Expand outwards like a light turning on */
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Keep text overlay gradient unchanged */
+.image-overlay {
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
+  z-index: 3; /* Ensure text is on top of the light */
+}
+
+.text-primary { color: var(--glow-primary) !important; }
+.text-info { color: var(--glow-secondary) !important; }
+
+/* =========================================
+   8. FIX FOR STATS BOXES (Light Mode)
+   ========================================= */
+
+/* Target the specific boxes in the Expertise section */
+[data-theme="light"] .bg-dark.bg-opacity-50 {
+  /* Change background from semi-transparent black to semi-transparent white/gray */
+  background-color: rgba(226, 232, 240, 0.8) !important; /* This is a soft slate gray */
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure the big numbers/text inside these boxes turn dark */
+[data-theme="light"] .bg-dark .text-white {
+  color: var(--text-primary) !important;
+}
+
+/* Optional: Add a subtle shadow in light mode so they pop against the white background */
+[data-theme="light"] .rounded-3.border {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   9. PROJECT CARDS STYLING
+   ========================================= */
+
+/* Card Base */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--glass-border);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  /* Highlight border on hover using current accent */
+  border-color: var(--current-accent); 
+}
+
+/* Thumbnail Zoom Effect */
+.project-thumb img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* If you don't have images yet, this placeholder bg helps */
+  background-color: #0f172a; 
+  min-height: 200px;
+  object-fit: cover;
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.05);
+}
+
+/* Badges inside image */
+.project-thumb .badge {
+  background: rgba(0, 0, 0, 0.5); /* Darker glass for readability */
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+}
+
+/* Links & Icons */
+.hover-white:hover {
+  color: white !important;
+  transition: color 0.2s ease;
+}
+
+/* Case Study Link Arrow Animation */
+.case-study-link i {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.case-study-link:hover i {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   LIGHT MODE FIXES FOR PROJECTS
+   ========================================= */
+[data-theme="light"] .project-card {
+  background: white; /* Solid white card in light mode */
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .project-card .text-white {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .project-thumb .badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: black !important;
+}
+
+[data-theme="light"] .hover-white:hover {
+  color: var(--current-accent) !important;
+}
+
+/* =========================================
+   10. CONTACT FORM STYLES (Fixed)
+   ========================================= */
+
+/* Glass Input Fields */
+.glass-input {
+  background: rgba(2, 6, 23, 0.5); 
+  border: 1px solid var(--glass-border);
+  color: white !important;
+  backdrop-filter: blur(4px);
+  border-radius: 12px; /* Softer rounded corners */
+}
+
+/* FIX: When you click, keep the background dark! */
+.glass-input:focus {
+  background: rgba(2, 6, 23, 0.9);
+  border-color: var(--current-accent);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); 
+  color: white;
+}
+
+/* --- FLOATING LABEL FIXES --- */
+
+/* 1. Default State (Inactive) */
+.form-floating > label {
+  color: #64748b; /* Slate-500 (Subtle) */
+  background-color: transparent !important; /* Remove the white background box */
+  padding-left: 1.25rem; /* Align with input text */
+}
+
+/* 2. Active State (Typing or Filled) */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: var(--current-accent); /* Turn blue (or accent color) */
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  background-color: transparent !important; /* Ensure it stays transparent */
+  font-weight: 600; /* Make it slightly readable but not bold */
+  opacity: 1;
+}
+
+/* 3. Input Text Padding (Make room for the label) */
+.form-floating > .form-control {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
+}
+
+/* Icon Box Styles */
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--current-accent) !important; /* Make icons match theme */
+}
+
+/* Validation Styles */
+.was-validated .form-control:invalid, .form-control.is-invalid {
+  border-color: var(--accent-rose);
+  background-image: none; 
+}
+
+.invalid-feedback {
+  color: var(--accent-rose);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+/* =========================================
+   LIGHT MODE FIXES FOR CONTACT
+   ========================================= */
+[data-theme="light"] .glass-input {
+  background: rgba(255, 255, 255, 0.8);
+  color: #0f172a !important;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .glass-input:focus {
+  background: white;
+  border-color: var(--current-accent);
+}
+
+[data-theme="light"] .icon-box {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Make email link readable in light mode */
+[data-theme="light"] a[href^="mailto"] {
+  color: var(--text-primary) !important;
+}
+
+/* =========================================
+   11. FOOTER STYLES
+   ========================================= */
+
+footer {
+  /* Ensure it sits above the nebula background but below modals */
+  z-index: 10;
+}
+
+.footer-link {
+  position: relative;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: var(--current-accent) !important; /* Turn blue/accent on hover */
+}
+
+/* Subtle dot indicator on hover */
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--current-accent);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Light Mode Footer Fixes */
+[data-theme="light"] footer {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-top-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] footer .text-secondary {
+  color: #64748b !important;
+}
+
+[data-theme="light"] footer .text-white {
+  color: #0f172a !important; /* Tech stack text becomes dark */
+}
+
+/* =========================================
+   12. HIRE ME MODAL
+   ========================================= */
+
+/* Dark Mode Modal (Default) */
+.modal-content {
+  color: #f8fafc;
+}
+
+/* Light Mode Modal Overrides */
+[data-theme="light"] .modal-content {
+  background-color: #ffffff !important;
+  color: #0f172a;
+}
+
+[data-theme="light"] .modal-header {
+  /* Keep gradient but adjust text if needed, usually white text on gradient is fine */
+}
+
+/* Fix Select Dropdown in Glass Mode */
+select.glass-input option {
+  background-color: #020617; /* Dark dropdown background */
+  color: white;
+}
+
+[data-theme="light"] select.glass-input option {
+  background-color: white;
+  color: black;
+}
+
+/* Success Animation */
+#hireSuccess {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }

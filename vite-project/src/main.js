@@ -7,7 +7,14 @@ window.heroRotationSpeed = 0.005;
 
 // ... existing imports
 import { initSettings } from './js/ui/settings.js';
+import { initHeroAnimation } from './js/three/heroAnimation.js';
+import { initSkillChart } from './js/canvas/skillChart.js';
+import { initFormHandler } from './js/forms/formHandler.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initSettings();
+    initHeroAnimation('three-container');
+    initSkillChart('skillsCanvas');
+    initFormHandler('contactForm'); 
+    initFormHandler('hireForm');
 });
