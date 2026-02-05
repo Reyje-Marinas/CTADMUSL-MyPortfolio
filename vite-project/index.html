@@ -19,55 +19,64 @@
       <div class="nebula-glow glow-purple"></div>
     </div>
 
-    <nav class="navbar navbar-expand fixed-top floating-nav glass-effect px-3 py-2 px-md-4 py-md-3">
-      <div class="container-fluid d-flex justify-content-between align-items-center">
+    <nav class="navbar navbar-expand-lg fixed-top floating-nav glass-effect px-2 py-2 px-md-4 py-md-3" data-aos="fade-down" data-aos-duration="1000">
+      <div class="container-fluid">
         
         <a class="navbar-brand font-heading fw-bold text-white d-flex align-items-center gap-2" href="#">
           <span class="brand-logo">R</span>
-          <span class="d-none d-sm-block">Reyje Marinas</span>
+          <span>Reyje Marinas</span>
         </a>
 
-        <ul class="navbar-nav d-none d-md-flex gap-4 font-body">
-          <li class="nav-item"><a class="nav-link text-light opacity-75" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link text-light opacity-75" href="#projects">Expertise</a></li>
-          <li class="nav-item"><a class="nav-link text-light opacity-75" href="#contact">Connect</a></li>
-        </ul>
-
-        <div class="d-flex gap-2 align-items-center">
-          <button class="btn btn-sm btn-outline-light rounded-pill px-3 border-opacity-25" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel">
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          
+          <button class="btn btn-sm btn-outline-light rounded-pill px-2 px-md-3 border-opacity-25" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel">
             ⚙️
           </button>
-          <button class="btn btn-primary rounded-pill px-4 font-heading fw-bold" data-bs-toggle="modal" data-bs-target="#hireModal">
-            Hire Me
+          
+          <button class="btn btn-primary rounded-pill px-3 px-md-4 font-heading fw-bold" data-bs-toggle="modal" data-bs-target="#hireModal">
+            <i class="bi bi-briefcase-fill d-sm-none"></i>
+            <span class="d-none d-sm-inline">Hire Me</span>
           </button>
+
+          <button class="navbar-toggler border-0 ms-1 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <i class="bi bi-list text-white fs-2"></i> 
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-center order-lg-2" id="navbarNav">
+          <ul class="navbar-nav gap-4 font-body mt-3 mt-lg-0 text-center">
+            <li class="nav-item"><a class="nav-link text-light opacity-75" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link text-light opacity-75" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link text-light opacity-75" href="#contact">Connect</a></li>
+          </ul>
         </div>
 
       </div>
     </nav>
 
     <header id="home" class="vh-100 d-flex align-items-center position-relative overflow-hidden">
-      <div id="three-container" class="position-absolute top-0 end-0 w-50 h-100 d-none d-lg-block" style="z-index: 0;"></div>
+      <div id="three-container" class="position-absolute top-0 end-0 w-50 h-100 d-none d-lg-block" style="z-index: 0;" data-aos="fade-in" data-aos-duration="2000"></div>
 
       <div class="container position-relative" style="z-index: 1;">
         <div class="row">
           <div class="col-lg-7">
-            <div class="d-inline-flex align-items-center glass-effect px-3 py-1 rounded-pill mb-4">
+            <div class="d-inline-flex align-items-center glass-effect px-3 py-1 rounded-pill mb-4" data-aos="fade-up" data-aos-delay="800">
               <span class="status-dot me-2"></span>
               <span class="text-white small font-body">Available for Q1 2026 Projects</span>
             </div>
 
-            <h1 class="display-1 font-heading fw-bold text-white lh-1 mb-4">
+            <h1 class="display-1 font-heading fw-bold text-white lh-1 mb-4" data-aos="fade-up" data-aos-delay="1000">
               Digital <br>
               <span class="text-gradient">Experiences</span> <br>
               Crafted with <br>
               Logic.
             </h1>
 
-            <p class="lead text-secondary font-body mb-5" style="max-width: 500px;">
+            <p class="lead text-secondary font-body mb-5" style="max-width: 500px;" data-aos="fade-up" data-aos-delay="1200">
               A BSIT student and Backend Developer pushing the boundaries of the web with ASP.NET Core, PHP, and Interactive Graphics.
             </p>
 
-            <div class="d-flex gap-3">
+            <div class="d-flex gap-3" data-aos="fade-up" data-aos-delay="1400">
               <a href="#projects" class="btn btn-light rounded-pill px-4 py-2 font-heading fw-bold">View Projects</a>
               <a href="#contact" class="btn glass-effect text-white rounded-pill px-4 py-2 font-heading">Get in Touch</a>
             </div>
@@ -81,35 +90,52 @@
         <div class="row align-items-center gx-5">
           
           <div class="col-lg-6 position-relative mb-5 mb-lg-0">
-            <canvas id="profileCanvas" class="position-absolute top-50 start-50 translate-middle" style="width: 140%; height: 140%; z-index: 0; opacity: 0.5;"></canvas>
-            
-            <div class="about-image-wrapper position-relative rounded-4 overflow-hidden shadow-lg" style="z-index: 1;">
+            <canvas id="profileCanvas" 
+                    class="position-absolute top-50 start-50 translate-middle" 
+                    style="width: 140%; height: 140%; z-index: 0; opacity: 0.5;"
+                    data-aos="zoom-in" 
+                    data-aos-duration="1000"></canvas> <div class="about-image-wrapper position-relative rounded-4 overflow-hidden shadow-lg" 
+                style="z-index: 1;"
+                data-aos="fade-right" 
+                data-aos-duration="700">
                 <img src="./public/assets/MyProfile.JPEG" alt="Reyje Marinas" class="img-fluid w-100 profile-img-base">
                 
-                <div class="image-overlay position-absolute bottom-0 start-0 w-100 p-4">
-                    <h4 class="font-heading fw-bold text-white mb-0">Reyje Marinas</h4>
+                <div class="image-overlay position-absolute bottom-0 start-0 w-100 p-4"
+                    data-aos="fade-up"
+                    data-aos-delay="200"> <h4 class="font-heading fw-bold text-white mb-0">Reyje Marinas</h4>
                     <p class="small text-white-50 mb-0">Backend Developer & Sys. Analyst</p>
                 </div>
             </div>
           </div>
 
           <div class="col-lg-6 ps-lg-5 position-relative" style="z-index: 2;">
-            <span class="badge glass-effect text-secondary px-3 py-2 rounded-pill mb-3 font-heading tracking-wide">MY JOURNEY</span>
             
-            <h2 class="display-5 font-heading fw-bold mb-4 lh-sm">
+            <span class="badge glass-effect text-secondary px-3 py-2 rounded-pill mb-3 font-heading tracking-wide"
+                  data-aos="fade-down" 
+                  data-aos-delay="100"> MY JOURNEY
+            </span>
+            
+            <h2 class="display-5 font-heading fw-bold mb-4 lh-sm" 
+                data-aos="fade-up" 
+                data-aos-delay="150">
                 Crafting code with <span class="text-primary">precision</span> and pixels with <span class="text-info">purpose</span>.
             </h2>
             
-            <p class="lead text-secondary mb-4">
+            <p class="lead text-secondary mb-4" 
+              data-aos="fade-up" 
+              data-aos-delay="200">
                 Hello! I'm Reyje, a BSIT student living at the intersection of complex logic and beautiful design. I specialize in building scalable web architectures using <strong class="text-white">ASP.NET Core</strong> and <strong class="text-white">PHP</strong>.
             </p>
             
-            <p class="text-secondary mb-5">
+            <p class="text-secondary mb-5" 
+              data-aos="fade-up" 
+              data-aos-delay="250">
                 My philosophy is simple: technology should be invisible. Whether it's the <strong>FindIT</strong> community system or the <strong>BayanChain</strong> platform, my focus is on solving real-world problems with rock-solid engineering.
             </p>
 
-            <div class="d-flex gap-5 border-top border-light border-opacity-10 pt-4">
-                <div>
+            <div class="d-flex gap-5 border-top border-light border-opacity-10 pt-4" 
+                data-aos="fade-up" 
+                data-aos-delay="300"> <div>
                     <h2 class="fw-bold font-heading text-white mb-0">5+</h2>
                     <p class="small text-secondary text-uppercase tracking-wide">Major Projects</p>
                 </div>
@@ -124,35 +150,51 @@
       </div>
     </section>
 
-<section id="expertise" class="py-5 position-relative">
+    <section id="expertise" class="py-5 position-relative">
       <div class="container py-5">
         <div class="row align-items-center">
           
           <div class="col-lg-5 mb-5 mb-lg-0">
-            <h2 class="display-5 font-heading fw-bold mb-4">
-              Bridging the gap between <span class="text-gradient">Design</span> and <span class="text-white">Code</span>.
+            
+            <h2 class="display-5 font-heading fw-bold mb-4" 
+                data-aos="fade-up">
+                Bridging the gap between <span class="text-gradient">Design</span> and <span class="text-white">Code</span>.
             </h2>
-            <p class="lead text-secondary mb-4">
-              I don't just build websites; I engineer systems. Using the native Canvas API and WebGL, I create high-performance interfaces that standard HTML simply cannot replicate.
+            
+            <p class="lead text-secondary mb-4" 
+              data-aos="fade-up" 
+              data-aos-delay="100">
+                I don't just build websites; I engineer systems. Using the native Canvas API and WebGL, I create high-performance interfaces that standard HTML simply cannot replicate.
             </p>
             
             <div class="row g-3">
-              <div class="col-6">
+              
+              <div class="col-6" 
+                  data-aos="zoom-in" 
+                  data-aos-delay="200">
                 <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-50 shadow-sm">
                   <h3 class="h2 fw-bold text-primary mb-0">98%</h3>
                   <p class="small text-secondary text-uppercase mb-0 tracking-wide">Optimization</p>
                 </div>
               </div>
-              <div class="col-6">
+              
+              <div class="col-6" 
+                  data-aos="zoom-in" 
+                  data-aos-delay="300">
                 <div class="p-3 rounded-3 border border-secondary border-opacity-10 bg-dark bg-opacity-50 shadow-sm">
                   <h3 class="h2 fw-bold text-white mb-0">BSIT</h3>
                   <p class="small text-secondary text-uppercase mb-0 tracking-wide">Academic Focus</p>
                 </div>
               </div>
+              
             </div>
           </div>
 
-          <div class="col-lg-7 ps-lg-5">
+          <div class="col-lg-7 ps-lg-5" 
+              data-aos="fade-left" 
+              data-aos-delay="150" 
+              data-aos-duration="800">
+              
             <div class="glass-effect rounded-4 p-4 p-md-5 position-relative overflow-hidden shadow-lg">
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h4 class="font-heading fw-bold text-white mb-0">Technical Proficiency</h4>
@@ -170,19 +212,29 @@
     <section id="projects" class="py-5 position-relative">
       <div class="container py-5">
         
-        <div class="mb-5">
-          <h2 class="display-4 font-heading fw-bold mb-3">
-            Selected <span class="text-gradient">Works</span>
-          </h2>
-          <p class="lead text-secondary" style="max-width: 600px;">
-            A collection of experimental multimedia projects and commercial applications focused on high-performance web experiences.
-          </p>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
+          <div class="mb-4 mb-md-0" 
+              data-aos="fade-up"> <h2 class="display-4 font-heading fw-bold mb-3">
+              Selected <span class="text-gradient">Works</span>
+            </h2>
+            <p class="lead text-secondary mb-0" style="max-width: 600px;">
+              A collection of experimental multimedia projects and commercial applications focused on high-performance web experiences.
+            </p>
+          </div>
+          
+          <a href="./projects.html" 
+            class="btn btn-outline-light rounded-pill px-4 py-2 font-heading fw-bold d-inline-flex align-items-center view-all-btn"
+            data-aos="fade-left"
+            data-aos-delay="200">
+            View Projects Archive <i class="bi bi-arrow-right ms-2"></i>
+          </a>
         </div>
 
         <div class="row g-4">
           
-          <div class="col-lg-4 col-md-6">
-            <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
+          <div class="col-lg-4 col-md-6" 
+              data-aos="fade-up" 
+              data-aos-delay="100"> <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
               <div class="project-thumb position-relative overflow-hidden">
                 <img src="./public/assets/labada.jpg" alt="FindIT System" class="img-fluid w-100">
                 <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
@@ -191,27 +243,18 @@
                 </div>
               </div>
               
-              <div class="card-body p-4 d-flex flex-column flex-grow-1">
+              <div class="card-body p-4">
                 <h3 class="h4 font-heading fw-bold text-white mb-2">FindIT System</h3>
-                <p class="text-secondary small mb-4 flex-grow-1">
+                <p class="text-secondary small mb-0">
                   A community-based Lost & Found system featuring real-time reporting, matching algorithms, and RESTful API integration.
                 </p>
-                
-                <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-secondary border-opacity-10">
-                  <div class="d-flex gap-3">
-                    <a href="#" class="icon-link text-secondary hover-white" title="View Code"><i class="bi bi-github fs-5"></i></a>
-                    <a href="#" class="icon-link text-secondary hover-white" title="Live Demo"><i class="bi bi-box-arrow-up-right fs-5"></i></a>
-                  </div>
-                  <a href="#" class="case-study-link small text-primary fw-bold text-decoration-none tracking-wide">
-                    EXPLORE CASE STUDY <i class="bi bi-arrow-right ms-1"></i>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
+          <div class="col-lg-4 col-md-6" 
+              data-aos="fade-up" 
+              data-aos-delay="200"> <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
               <div class="project-thumb position-relative overflow-hidden">
                 <img src="./public/assets/labada.jpg" alt="Apartment AI" class="img-fluid w-100">
                 <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
@@ -220,27 +263,18 @@
                 </div>
               </div>
               
-              <div class="card-body p-4 d-flex flex-column flex-grow-1">
+              <div class="card-body p-4">
                 <h3 class="h4 font-heading fw-bold text-white mb-2">Apartment AI</h3>
-                <p class="text-secondary small mb-4 flex-grow-1">
+                <p class="text-secondary small mb-0">
                   Capstone project featuring an AI-driven matching engine that suggests apartments to tenants based on lifestyle preferences.
                 </p>
-                
-                <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-secondary border-opacity-10">
-                  <div class="d-flex gap-3">
-                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-github fs-5"></i></a>
-                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-box-arrow-up-right fs-5"></i></a>
-                  </div>
-                  <a href="#" class="case-study-link small text-primary fw-bold text-decoration-none tracking-wide">
-                    EXPLORE CASE STUDY <i class="bi bi-arrow-right ms-1"></i>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
+          <div class="col-lg-4 col-md-6" 
+              data-aos="fade-up" 
+              data-aos-delay="300"> <div class="project-card glass-effect h-100 d-flex flex-column rounded-4 overflow-hidden">
               <div class="project-thumb position-relative overflow-hidden">
                 <img src="./public/assets/labada.jpg" alt="MabalaCan" class="img-fluid w-100">
                 <div class="position-absolute top-0 start-0 p-3 d-flex gap-2">
@@ -249,21 +283,11 @@
                 </div>
               </div>
               
-              <div class="card-body p-4 d-flex flex-column flex-grow-1">
+              <div class="card-body p-4">
                 <h3 class="h4 font-heading fw-bold text-white mb-2">MabalaCan Reporting</h3>
-                <p class="text-secondary small mb-4 flex-grow-1">
+                <p class="text-secondary small mb-0">
                   A map-integrated community reporting platform. Designed the complete architecture including Use Cases, DFDs, and ERDs.
                 </p>
-                
-                <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-secondary border-opacity-10">
-                  <div class="d-flex gap-3">
-                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-github fs-5"></i></a>
-                    <a href="#" class="icon-link text-secondary hover-white"><i class="bi bi-box-arrow-up-right fs-5"></i></a>
-                  </div>
-                  <a href="#" class="case-study-link small text-primary fw-bold text-decoration-none tracking-wide">
-                    EXPLORE CASE STUDY <i class="bi bi-arrow-right ms-1"></i>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -275,36 +299,47 @@
     <section id="contact" class="py-5 position-relative">
       <div class="container py-5">
         
-        <div class="glass-effect rounded-5 p-4 p-lg-5 overflow-hidden position-relative">
+        <div class="glass-effect rounded-5 p-4 p-lg-5 overflow-hidden position-relative" 
+            data-aos="fade-up" 
+            data-aos-duration="1000">
           
           <div class="row g-5 align-items-center position-relative" style="z-index: 1;">
             
             <div class="col-lg-5">
-              <h2 class="display-5 font-heading fw-bold mb-4">
+              <h2 class="display-5 font-heading fw-bold mb-4" 
+                  data-aos="fade-right">
                 Let’s start a <br> <span class="text-gradient">conversation.</span>
               </h2>
-              <p class="lead text-secondary mb-5">
+              
+              <p class="lead text-secondary mb-5" 
+                data-aos="fade-right" 
+                data-aos-delay="100">
                 Interested in collaboration or just want to chat about system architecture? Send me a message and I'll get back to you within 24 hours.
               </p>
               
               <div class="d-flex flex-column gap-4">
-                <div class="d-flex align-items-center gap-3">
+                
+                <div class="d-flex align-items-center gap-3" 
+                    data-aos="fade-up" 
+                    data-aos-delay="200">
                   <div class="icon-box glass-effect rounded-circle p-3 d-flex align-items-center justify-content-center text-primary">
                     <i class="bi bi-envelope-fill fs-4"></i>
                   </div>
                   <div>
                     <span class="d-block text-secondary small text-uppercase tracking-wide">Email</span>
-                    <a href="mailto:reyje.marinas@example.com" class="text-white text-decoration-none fw-light fs-5">reyje.marinas@example.com</a>
+                    <a href="mailto:reyje.marinas@example.com" class="text-white text-decoration-none fw-light fs-6">reyje.marinas@example.com</a>
                   </div>
                 </div>
 
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-3" 
+                    data-aos="fade-up" 
+                    data-aos-delay="300">
                   <div class="icon-box glass-effect rounded-circle p-3 d-flex align-items-center justify-content-center text-primary">
                     <i class="bi bi-geo-alt-fill fs-4"></i>
                   </div>
                   <div>
                     <span class="d-block text-secondary small text-uppercase tracking-wide">Location</span>
-                    <span class="text-white fw-light fs-5">Pampanga, Philippines</span>
+                    <span class="text-white fw-light fs-6">Pampanga, Philippines</span>
                   </div>
                 </div>
               </div>
@@ -319,7 +354,9 @@
               <form id="contactForm" novalidate>
                 <div class="row g-3">
                   
-                  <div class="col-md-6">
+                  <div class="col-md-6" 
+                      data-aos="fade-up" 
+                      data-aos-delay="200">
                     <div class="form-floating">
                       <input type="text" class="form-control glass-input" id="name" placeholder="Name" required minlength="2">
                       <label for="name">Name</label>
@@ -327,7 +364,9 @@
                     </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6" 
+                      data-aos="fade-up" 
+                      data-aos-delay="300">
                     <div class="form-floating">
                       <input type="email" class="form-control glass-input" id="email" placeholder="name@example.com" required>
                       <label for="email">Email</label>
@@ -335,7 +374,9 @@
                     </div>
                   </div>
 
-                  <div class="col-12">
+                  <div class="col-12" 
+                      data-aos="fade-up" 
+                      data-aos-delay="400">
                     <div class="form-floating">
                       <textarea class="form-control glass-input" placeholder="Message" id="message" style="height: 150px" required minlength="10"></textarea>
                       <label for="message">Your Message</label>
@@ -343,7 +384,9 @@
                     </div>
                   </div>
 
-                  <div class="col-12">
+                  <div class="col-12" 
+                      data-aos="zoom-in" 
+                      data-aos-delay="500">
                     <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 font-heading fw-bold d-flex align-items-center justify-content-center gap-2">
                       <span>Send Message</span>
                       <i class="bi bi-arrow-right"></i>

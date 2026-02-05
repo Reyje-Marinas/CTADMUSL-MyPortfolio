@@ -1,10 +1,9 @@
 /* 1. VARIABLES & THEMES*/
 :root {
-  /* --- Core Colors --- */
   /* Default Dark Mode (Slate-950) */
   --bg-color: #020617; 
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+  --text-secondary: #b1c0d5;
   
   /* Glass Variables (Dynamic) */
   --glass-bg: rgba(255, 255, 255, 0.03);
@@ -59,6 +58,12 @@ body {
   background: linear-gradient(135deg, var(--glow-primary), var(--glow-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+[data-aos] {
+    pointer-events: none;
+}
+.aos-animate {
+    pointer-events: auto;
 }
 
 /* =========================================
@@ -160,30 +165,43 @@ body {
    ========================================= */
 
 .floating-nav {
-  /* Detach from edges (The "Floating" effect) */
   position: fixed;
-  top: 1rem;       /* Margin from top */
-  left: 1rem;      /* Margin from left */
-  right: 1rem;     /* Margin from right */
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   
-  /* The "Pill" Shape */
+  /* FORCE width to respect margins, preventing flex overflow */
+  width: calc(100% - 2rem) !important;
+  max-width: 100vw;
+  
   border-radius: 20px; 
-  z-index: 1030;   /* Keep above everything */
-  
-  /* Reset Bootstrap's full width forcing */
-  width: auto;     
-  
-  /* Smooth transition for resizing */
+  z-index: 1030;
   transition: all 0.3s ease-in-out;
 }
 
-/* On larger screens, give it more breathing room and roundness */
+/* On very small screens (iPhone SE, Fold), reduce margins to give more room */
+@media (max-width: 375px) {
+  .floating-nav {
+    left: 0.5rem;
+    right: 0.5rem;
+    width: calc(100% - 1rem) !important;
+    top: 0.5rem;
+  }
+  
+  /* Reduce gap between buttons slightly */
+  .navbar .d-flex.gap-2 {
+    gap: 0.25rem !important;
+  }
+}
+
+/* Desktop Styles */
 @media (min-width: 992px) {
   .floating-nav {
     top: 1.5rem;
     left: 3rem;
     right: 3rem;
-    border-radius: 50px; /* Full pill shape on desktop */
+    width: calc(100% - 6rem) !important; /* Adjust width calc for desktop margins */
+    border-radius: 50px;
   }
 }
 
@@ -211,6 +229,81 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
+/* =========================================
+   NAVBAR RESPONSIVE FIXES
+   ========================================= */
+
+/* Remove default Bootstrap border on toggler */
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Light Mode Toggler Color Fix */
+[data-theme="light"] .navbar-toggler i {
+  color: #0f172a !important; /* Make hamburger dark in light mode */
+}
+
+/* =========================================
+   MOBILE MENU STYLING (The Detached Dropdown)
+   ========================================= */
+@media (max-width: 991px) {
+  
+  /* 1. Detach the menu from the navbar flow */
+  .navbar-collapse {
+    position: absolute; /* This is the key fix */
+    top: 100%;          /* Push it to the bottom of the header */
+    left: 0;
+    right: 0;
+    
+    /* 2. Style it as a separate glass card */
+    background: rgba(15, 23, 42, 0.95); /* Darker bg for readability */
+    margin-top: 10px;   /* Small gap between header and menu */
+    border-radius: 15px;
+    padding: 1rem;
+    
+    /* 3. Glass Effect for the menu specifically */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* 4. Fix for the animation smoothness */
+    z-index: 1000;
+    overflow: hidden; /* Prevents content from spilling during animation */
+  }
+
+  /* Adjust links for mobile touch targets */
+  .navbar-nav .nav-link {
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255,255,255, 0.9);
+  }
+
+  .navbar-nav .nav-item:last-child .nav-link {
+    border-bottom: none;
+  }
+
+  /* Light mode mobile menu fix */
+  [data-theme="light"] .navbar-collapse {
+    background: rgba(255, 255, 255, 0.85); /* Milky white for light mode */
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  [data-theme="light"] .navbar-nav .nav-link {
+    color: #0f172a !important;
+    border-color: rgba(0,0,0,0.05);
+  }
+}
+
+/* Reduce font size slightly on mobile so name + buttons fit */
+@media (max-width: 400px) {
+  .navbar-brand {
+    font-size: 1rem !important; /* Adjust if needed */
+  }
+  .navbar-brand span:last-child {
+    white-space: nowrap; /* Prevents name from breaking into two lines */
+  }
+}
 /* =========================================
    5. SETTINGS PANEL (OFFCANVAS)
    ========================================= */
@@ -475,14 +568,10 @@ input[type=range]::-webkit-slider-thumb:hover {
   transition: color 0.2s ease;
 }
 
-/* Case Study Link Arrow Animation */
-.case-study-link i {
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.case-study-link:hover i {
-  transform: translateX(4px);
+.project-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* =========================================
@@ -505,6 +594,17 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 [data-theme="light"] .hover-white:hover {
   color: var(--current-accent) !important;
+}
+
+[data-theme="light"] .view-all-btn {
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="light"] .view-all-btn:hover {
+  background-color: var(--current-accent) !important;
+  border-color: var(--current-accent) !important;
+  color: white !important;
 }
 
 /* =========================================
@@ -687,4 +787,200 @@ select.glass-input option {
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================================
+   13. PROJECT ARCHIVE PAGE
+   ========================================= */
+
+/* --- Header Elements (Back Link & Stats) --- */
+.back-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: white;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--current-accent);
+  line-height: 1;
+}
+
+/* --- Hackathon Carousel --- */
+.hackathon-card {
+  height: 500px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #000;
+}
+
+.hackathon-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.hackathon-card:hover img {
+  transform: scale(1.03);
+}
+
+.hackathon-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+}
+
+.event-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+/* Custom Carousel Indicators */
+.custom-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.custom-indicators button {
+  width: 30px;
+  height: 6px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.custom-indicators button.active {
+  background-color: var(--current-accent);
+  width: 45px;
+}
+
+/* Responsive Tweak */
+@media (max-width: 768px) {
+  .hackathon-card { height: 350px; }
+  .hackathon-overlay { padding: 25px; }
+}
+
+/* --- Catalog Divider --- */
+.catalog-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+}
+
+.catalog-header::before,
+.catalog-header::after {
+  content: '';
+  height: 1px;
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.catalog-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   15. LIGHT MODE FIXES (ARCHIVE PAGE)
+   ========================================= */
+
+/* 1. Fix the "Pills" (Indicators) */
+/* In light mode, make them dark gray instead of white */
+[data-theme="light"] .custom-indicators button {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="light"] .custom-indicators button.active {
+  background-color: var(--current-accent) !important;
+}
+
+/* 2. Fix the "Full Catalog" Divider Lines */
+/* Change lines from white to subtle black */
+[data-theme="light"] .catalog-header::before,
+[data-theme="light"] .catalog-header::after {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 3. Fix the "Full Catalog" Text */
+/* Ensure text is dark enough to read */
+[data-theme="light"] .catalog-title {
+  color: #64748b !important; /* Slate-500 */
+}
+
+/* 4. Fix the "Back to Home" Link */
+[data-theme="light"] .back-link {
+  color: #64748b !important;
+}
+[data-theme="light"] .back-link:hover {
+  color: var(--current-accent) !important;
+}
+
+/* 5. Fix the "Total Contributions" Stats */
+[data-theme="light"] .stat-label {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .hackathon-card {
+  background: var(--bg-color); 
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .hackathon-overlay {
+  background: linear-gradient(to top, #ffffff 10%, rgba(255, 255, 255, 0.8) 40%, transparent 100%) !important;
+}
+
+[data-theme="light"] .hackathon-overlay .text-white {
+  color: #0f172a !important; /* Slate-900 */
+  text-shadow: none !important; /* Remove any dark shadows */
+}
+
+/* C. The Badge: Make it subtle gray instead of white glass */
+[data-theme="light"] .hackathon-overlay .event-badge {
+  background: rgba(255, 255, 255, 0.9) !important; /* Solid white background */
+  border: 1px solid rgba(0, 0, 0, 0.2) !important; /* darker border */
+  color: #0f172a !important; /* Dark text (Slate-900) - CRITICAL FIX */
+  font-weight: 700 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* subtle shadow for pop */
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
 }

@@ -1,21 +1,44 @@
 export function initSettings() {
     console.log("Initializing Settings Panel...");
 
+    // --- 0. LOAD SAVED THEME ON STARTUP ---
+    // Check if the user previously selected 'light'
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'light') {
+        // Apply Light Mode
+        document.body.setAttribute('data-theme', 'light');
+        
+        // Update the Radio Button UI to match
+        const lightRadio = document.getElementById('themeLight');
+        if (lightRadio) lightRadio.checked = true;
+
+        // Update Close Button style
+        const closeBtn = document.querySelector('.btn-close');
+        if (closeBtn) closeBtn.classList.remove('btn-close-white');
+    }
+
     // 1. Theme Switcher (Light/Dark)
     const themeRadios = document.querySelectorAll('input[name="theme"]');
     themeRadios.forEach(radio => {
         radio.addEventListener('change', (e) => {
             let theme = 'dark'; // Default
+            
             if (e.target.id === 'themeLight') {
                 document.body.setAttribute('data-theme', 'light');
-                document.querySelector('.btn-close').classList.remove('btn-close-white');
+                const closeBtn = document.querySelector('.btn-close');
+                if (closeBtn) closeBtn.classList.remove('btn-close-white');
                 theme = 'light';
             } else {
                 document.body.removeAttribute('data-theme');
-                document.querySelector('.btn-close').classList.add('btn-close-white');
+                const closeBtn = document.querySelector('.btn-close');
+                if (closeBtn) closeBtn.classList.add('btn-close-white');
                 theme = 'dark';
             }
             
+            // --- CRITICAL FIX: SAVE TO LOCAL STORAGE ---
+            localStorage.setItem('theme', theme);
+
             // DISPATCH EVENT so Three.js knows!
             window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: theme } }));
         });
@@ -29,7 +52,8 @@ export function initSettings() {
         
         // Update Active Button UI
         document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`button[data-color="${colorName}"]`).classList.add('active');
+        const activeBtn = document.querySelector(`button[data-color="${colorName}"]`);
+        if(activeBtn) activeBtn.classList.add('active');
 
         // Optional: Dispatch event if Three.js needs to know
         window.dispatchEvent(new CustomEvent('accent-change', { detail: { color: colorName } }));
