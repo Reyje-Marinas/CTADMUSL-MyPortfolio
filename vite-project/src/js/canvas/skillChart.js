@@ -14,12 +14,13 @@ export function initSkillChart(canvasId) {
     let isDarkMode = !document.body.getAttribute('data-theme') || document.body.getAttribute('data-theme') !== 'light';
 
     const skills = [
-        { name: "ASP.NET CORE / C#", level: 0.95, color: "#0ea5e9" }, 
-        { name: "PHP & MYSQL", level: 0.88, color: "#10b981" },       
-        { name: "THREE.JS / WEBGL", level: 0.75, color: "#8b5cf6" },  
-        { name: "CANVAS API", level: 0.82, color: "#f43f5e" },        
-        { name: "SYSTEMS ANALYSIS", level: 0.90, color: "#3b82f6" }   
+    { name: "ASP.NET Core / MVC / Razor", level: 0.85, color: "#0ea5e9" },
+    { name: "Entity Framework Core & LINQ", level: 0.82, color: "#10b981" },
+    { name: "Backend Systems & Auth Logic", level: 0.80, color: "#3b82f6" },
+    { name: "REST APIs & Database Design", level: 0.78, color: "#8b5cf6" },
+    { name: "Project-Based Development", level: 0.88, color: "#f43f5e" }
     ];
+
 
     // 1. Resize & DPI
     function resize() {
