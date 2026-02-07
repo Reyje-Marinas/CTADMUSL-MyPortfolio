@@ -1,12 +1,15 @@
 {
   "name": "vite-project",
+  "homepage": "https://reyje-marinas.github.io/CTADMUSL-MyPortfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "vite": "^7.2.4"
